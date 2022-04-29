@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Phone;
+use App\Models\Post;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -15,8 +16,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    
+//one to one relations 
+Route::get('/', function () {  
     $user = User::all();
-    return view('welcome',compact('user'));
+    return view('one_to_one',compact('user'));
+});
+
+//one to many relations 
+Route::get('/one_to_many',function(){
+
+    $posts = Post::all();
+    return view('one_to_many',compact('posts'));
 });
